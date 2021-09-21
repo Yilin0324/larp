@@ -96,11 +96,10 @@ $(document).ready(function(){
 });
 
   
-  $(".imgtype").on('click',function(){
-    let img = $(this).clone().children()
-    $("#imgShow").html(img)
-  })
-  
+  // $(".imgtype").on('click',function(){
+  //   let img = $(this).clone().children()
+  //   $("#imgShow").html(img)
+  // })
 
 
 

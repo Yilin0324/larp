@@ -52,19 +52,27 @@
       </div>
     </nav>
   </header>
+  <?php
+  $heros=$Hero->all(['sh'=>1]);
+
+    foreach($heros as $hero){
+?>
+
+    
   <!-- home -->
-  <section id="hero">
+  <section id="hero" style="width: 100%; height: 90vh; position: relative;background: url('img/<?=$hero['img'];?>'); background-size: cover; object-fit: cover;">
     <div class="hero-container">
       <div class="col-6 offset-6">
-        <h1 data-aos="fade-up">LARP Times</h1>
+        <h1 data-aos="fade-up"><?=$hero['title'];?></h1>
         <p class="col d-none d-md-block lh-lg" data-aos="fade-up">
-          合作創作故事、嘗試追求人物目標及挑戰、沉沁於虛構的環境都可以是樂趣來源。LARPs還可以包括其他小遊戲譬如謎題解答，以及體育類的模擬武器作戰。
-          一些LARPs更強調藝術方面，如相互作用的劇情或挑戰主題。Avant-garde或arthaus 事件有特別的實驗方法和高度的文化願望，偶爾會在諸如節日或藝術博物館的美術環境中舉行。
+        <?=$hero['text'];?>
         </p>
       </div>
     </div>
   </section><!-- End home Section -->
-
+<?php
+  }
+?>
   <!-- marquee -->
   <div class="p-4">
     <div class="container">
@@ -73,52 +81,63 @@
           LARP
         </div>
         <div class="col-lg-11">
-          <marquee>歡迎大家來踴躍參加活動,體驗角色臨演的快感!</marquee>
+          <marquee>歡迎大家來踴躍參加活動，體驗角色臨演的快感！時常會有線上活動，集點可換好禮！快邀請身旁的親朋好友來參加吧！</marquee>
         </div>
       </div>
     </div>
     <hr class="mx-3">
   </div>
 
+  <?php
+  $abouts=$About->all(['sh'=>1]);
+
+    foreach($abouts as $about){
+  ?>
   <!-- About -->
   <section id="about" class="about">
     <div class="container">
 
       <div class="row">
         <div class="col-lg-6 gx-5" data-aos="fade-up">
-          <!-- <h6 class="h6 danger fw-bold  text-danger">關於我們</h6> -->
+
           <div class="row align-items-center fw-bold mb-3">
             <div class="col-auto">
               <h3 class="fw-bold text-danger newsTitle px-3 d-inline-block">關於我們</h3>
               <span class="fw-bold text-secondary">Abouts us</span>
             </div>
           </div>
-          <h1 class="h1 my-4 fw-bold text-dark">Live Action Role Playing</h1>
+          <h1 class="h1 my-4 fw-bold text-dark"><?=$about['title'];?></h1>
           <p class="lh-lg">
-            實境角色扮演遊戲（LARP）是角色扮演遊戲的其中一種形式，參與者在扮演角色的同時須要實際的做出動作行為。玩家的目標是在現實環境的限制中追求虛構環境扮演，同時與其他扮演角色互動。歡迎有興趣的朋友可以加入我們的行列，一起經歷美好的羈絆時光吧!
+            <?=$about['text'];?>
           </p>
+    <?php
+      }
+    ?>
           <p class="my-4 fw-bold">各個活動傳送們 :</p>
-          <div class="row">
-            <div class="col-lg-6">
-              <p><i class="far fa-hand-point-right me-2"></i><a href="#">中古世紀實境遊戲</a></p>
+          <div class="row mb-3">
+    <?php
+      $links=$Link->all(['sh'=>1]);
+      foreach($links as $link){
+    ?>
+            <div class="col-md-6">
+              <p><i class="far fa-hand-point-right me-2"></i><a href="<?=$link['href'];?>"><?=$link['text'];?></a></p>
             </div>
-            <div class="col-lg-6">
-              <p><i class="far fa-hand-point-right me-2"></i><a href="#">炙燒黑鮪魚商會</a></p>
-            </div>
-            <div class="col-lg-6">
-              <p><i class="far fa-hand-point-right me-2"></i><a href="#">伊諾斯維</a></p>
-            </div>
-            <div class="col-lg-6">
-              <p><i class="far fa-hand-point-right me-2"></i><a href="#">福爾摩莎尼亞戰記</a></p>
-            </div>
-
+    <?php
+      }
+    ?>
           </div>
         </div>
+    <?php
+      $abouts=$About->all(['sh'=>1]);
+      foreach($abouts as $about){
+    ?>
         <div class="col-lg-6 gx-5" data-aos="fade-up" data-aos-delay="500">
-          <img class="img-fluid" src="img/a01.jpg" style="width: 600px;height: 400px; object-fit: cover;">
+          <img class="img-fluid" src="img/<?=$about['img'];?>" style="width: 600px;height: 480px; object-fit: cover;">
         </div>
       </div>
-
+    <?php
+    }
+    ?>
     </div>
   </section><!-- End About Section -->
 
@@ -127,10 +146,7 @@
   <section id="news" class="news section-bg">
     <div class="container">
 
-      <div class="section-title">
-        <!-- <h5 class="h5 danger fw-bold text-danger">活動消息</h5>
-          <h2>NEWS & ARTICLE</h2> -->
-      </div>
+      <div class="section-title"></div>
 
       <div class="row">
 
@@ -143,46 +159,21 @@
               </div>
             </div>
             <hr style="border-right: 80px solid #fff;">
-            <!-- <h3 class="news-title mb-3" data-aos="fade-up">最新消息</h3> -->
+    <?php
+      $events=$News->all(['sh'=>1],"order by `id` desc limit 6,4");
+      foreach($events as $event){
+    ?>
             <div class="card m-2" style="width: 20rem;">
-              <img src="https://picsum.photos/800/600/?random=1" class="card-img-top mt-3">
+              <img src="img/<?=$event['img'];?>" class="card-img-top mt-3" style="height:180px; object-fit: cover">
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p><i class="far fa-clock"></i> 2021年3月2日</p>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                  card's content.</p>
+                <h5 class="card-title"><?=$event['title'];?></h5>
+                <p><i class="far fa-clock"></i> <?=$event['day'];?></p>
+                <p class="card-text" style="white-space: pre-wrap;"><?=$event['text'];?></p>
               </div>
             </div>
-
-            <div class="card m-2" style="width: 20rem;">
-              <img src="https://picsum.photos/800/600/?random=2" class="card-img-top mt-3">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p><i class="far fa-clock"></i> 2021年3月2日</p>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                  card's content.</p>
-              </div>
-            </div>
-
-            <div class="card m-2" style="width: 20rem;">
-              <img src="https://picsum.photos/800/600/?random=3" class="card-img-top mt-3">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p><i class="far fa-clock"></i> 2021年3月2日</p>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                  card's content.</p>
-              </div>
-            </div>
-
-            <div class="card m-2" style="width: 20rem;">
-              <img src="https://picsum.photos/800/600/?random=4" class="card-img-top mt-3">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p><i class="far fa-clock"></i> 2021年3月2日</p>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                  card's content.</p>
-              </div>
-            </div>
+    <?php
+      }
+    ?>
 
           </div>
         </div>
@@ -197,19 +188,21 @@
           </div>
           <hr>
 
-          <!-- <h3 class="news-title mb-3" data-aos="fade-up">歷史活動</h3> -->
-
           <div class="row">
-            <a type="button" class="modelButton" data-bs-toggle="modal" data-bs-target="#newsModel">
+    <?php
+      $news=$News->all(['sh'=>1],"order by `id` desc limit 0,6");
+      foreach($news as $new){
+    ?>
+            <a type="button" class="modelButton" data-bs-toggle="modal" data-bs-target="#newsModel<?=$new['id'];?>">
               <div class="py-2 mt-3 ">
-                <h5 class="h5 fw-bold">春季慶典-LARP烤肉餐會</h5>
-                <p class="history-place">台北市大同區堤外道路運動場</p>
-                <p><i class="far fa-clock"></i> 4月24日週六</p>
+                <h5 class="h5 fw-bold"><?=$new['title'];?></h5>
+                <p class="history-place"><?=$new['place'];?></p>
+                <p><i class="far fa-clock"></i> <?=$new['day'];?></p>
               </div>
             </a>
-
+    
             <!-- Modal -->
-            <div class="modal fade" id="newsModel" tabindex="-1" aria-labelledby="newsModelLabel"
+            <div class="modal fade" id="newsModel<?=$new['id'];?>" tabindex="-1" aria-labelledby="newsModelLabel<?=$new['id'];?>"
               aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
@@ -217,16 +210,15 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </span>
                   <div class="modal-header justify-content-center position-relative">
-                    <h5 class="modal-title" id="newsModelLabel">Modal title</h5>
+                    <h5 class="modal-title" id="newsModelLabel<?=$new['id'];?>"><?=$new['title'];?></h5>
                   </div>
                   <div class="modal-body">
 
                     <div class="m-2" style="width: 28rem;">
-                      <img src="https://picsum.photos/800/600/?random=2" class="card-img-top mt-3">
+                      <img src="img/<?=$new['img'];?>" class="card-img-top mt-3">
                       <div class="card-body">
-                        <p><i class="far fa-clock"></i> 2021年3月2日</p>
-                        <p class="">Some quick example text to build on the card title and make up the bulk of the
-                          card's content.</p>
+                        <p><i class="far fa-clock"></i> <?=$new['day'];?></p>
+                        <p style="white-space: pre-wrap;"><?=$new['text'];?></p>
                       </div>
                     </div>
 
@@ -235,26 +227,9 @@
                 </div>
               </div>
             </div>
-
-
-            <div class="py-2 mt-3">
-              <h5 class="h5 fw-bold">紅藍歷險Beta 重返黎明</h5>
-              <p class="history-place">大安森林公園</p>
-              <p><i class="far fa-clock"></i> 3月27日週六</p>
-            </div>
-
-            <div class="py-2 mt-3">
-              <h5 class="h5 fw-bold">扮裝季12-冷鋒季</h5>
-              <p class="history-place">線上活動</p>
-              <p><i class="far fa-clock"></i> 3月18日週四</p>
-            </div>
-
-            <div class="py-2 mt-3">
-              <h5 class="h5 fw-bold">Larp扮裝季第11季 [萬聖季]</h5>
-              <p class="history-place">線上活動</p>
-              <p><i class="far fa-clock"></i> 2020年11月30日週一</p>
-            </div>
-
+    <?php
+      }
+    ?>
           </div>
 
         </div>
@@ -278,42 +253,27 @@
       </div>
       <div class="row pb-3 pt-3">
         <div class="owl-carousel owl-theme">
+    <?php
+      $images=$Image->all(['sh'=>1]);
+        foreach($images as $image){
+    ?>
           <div class="item">
             <a type="button" class="imgtype">
-              <img src="https://picsum.photos/800/600/?random=1">
+              <img class="img-fluid" src="img/<?=$image['img'];?>" style="height:230px; object-fit: cover;">
             </a>
           </div>
-
-          <div class="item">
-            <a type="button" class="imgtype">
-              <img src="https://picsum.photos/800/600/?random=2">
-            </a>
-          </div>
-          <div class="item" >
-            <a type="button" class="imgtype">
-              <img src="https://picsum.photos/800/600/?random=3">
-            </a>
-          </div>
-          <div class="item">
-            <img src="https://picsum.photos/400/300/?random=4">
-          </div>
-          <div class="item">
-            <img src="https://picsum.photos/400/300/?random=5">
-          </div>
-          <div class="item">
-            <img src="https://picsum.photos/400/300/?random=6">
-          </div>
-          <div class="item">
-            <img src="https://picsum.photos/400/300/?random=7">
-          </div>
+    <?php
+      }
+    ?>
         </div>
       </div>
 
     </div>
-    <div class="container imgContainer">
+    <!-- <div class="container imgContainer">
       <div id="imgShow" class="text-center mt-5"></div>
-    </div>
+    </div> -->
     <!-- <div>
+
       <div class="row g-0">
         <div class="col-lg-3 col-md-6">
           <div class="imagePicture">
@@ -369,7 +329,7 @@
       <div class="row">
         <h5 class="h5 text-center fw-bold pb-3">THANK YOU!</h5>
         <p class="text-center mb-5">
-          感謝撥冗瀏覽此頁面，歡迎使用 <a href=""><i class="fab fa-facebook" style="color:#6c757d;"></i></a> 與我們聯繫：）
+          感謝撥冗瀏覽此頁面，歡迎使用 <a href="https://www.facebook.com/LARPtimes"><i class="fab fa-facebook" style="color:#6c757d;"></i></a> 與我們聯繫：）
         </p>
       </div>
 
@@ -380,20 +340,23 @@
   <section class="bg-dark text-muted text-center pt-5" style="overflow: hidden;">
     <div class="container border-bottom border-secondary pb-3">
       <div class="row">
+
         <div class="col-lg-4">
-          <p><a href="#" style="color:#6c757d;text-decoration: auto;">
+          <p><a href="https://www.facebook.com/LARPtimes" style="color:#6c757d;text-decoration: auto;">
               <img src="img/logo03.png" alt="Logo" style="width: 145px;overflow: hidden;"><br>
               歡迎加入粉絲團 <i class="fab fa-facebook"></i></a></p>
+        </div>
 
-        </div>
         <div class="col-lg-4">
-          <br>
-          今日瀏覽人次 : 2
+            <p>更新日期 : </p>
+            <p><?=$Time->find(1)['text'];?> </p>
         </div>
+
         <div class="col-lg-4">
-          <br>
-          總計瀏覽人次 : 3
+          <p>今日瀏覽人次 : <?=$Total->find(['date'=>date("Y-m-d")])['total'];?> </p>
+          <p>總計瀏覽人次 : <?=$Total->sum('total');?></p>
         </div>
+
       </div>
     </div>
   </section>
@@ -404,11 +367,7 @@
       Designed by xxx<br>
       copyright &copy; <span>xxx</span>. all rights reserved
     </small>
-    <!-- <div id="Arrow" class="position-fixed">
-      <a href="#hero" class="btn btn-danger text-white rounded-circle p-2 border-0">
-        <i class="fas fa-angle-up"></i>
-      </a>
-    </div> -->
+    
   </footer><!-- End footer Section -->
 
 

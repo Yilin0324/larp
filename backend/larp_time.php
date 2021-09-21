@@ -35,9 +35,9 @@
         <table style="margin-top:40px; width:70%;">
             <tbody>
                 <tr>
-                    <td width="200px">
+                    <!-- <td width="200px">
                     <input type="button" data-bs-toggle="modal" data-bs-target="#hiModel" value="<?=$as[$do];?>">
-                    </td>
+                    </td> -->
                     <td class="cent">
                         <input type="submit" value="修改確定">
                         <input type="reset" value="重置">
@@ -53,7 +53,7 @@
 
 
 <!-- insert model-->
-<div class="modal fade" id="hiModel" tabindex="-1" aria-labelledby="modelLable" aria-hidden="true">
+<!-- <div class="modal fade" id="hiModel" tabindex="-1" aria-labelledby="modelLable" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -80,4 +80,4 @@
             </form>
         </div>
     </div>
-</div>
+</div> -->
