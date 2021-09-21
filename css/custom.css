@@ -1,0 +1,188 @@
+body {
+  font-family: 'Microsoft JhengHei','Noto Sans TC', 'Open Sans', Helvetica, Arial;
+  /* background: #eee; */
+  color: #5a656e;
+}
+
+
+
+:root {
+  scroll-behavior: auto;
+}
+
+
+/* #header-nav {
+  transition: 1s ease;
+} */
+
+/*--------------------------------------------------------------
+# Hero Section
+--------------------------------------------------------------*/
+#hero {
+    width: 100%;
+    height: 90vh;
+    position: relative;
+    background: url("../img/hero01.jpg"); 
+    background-size: cover;
+    object-fit: cover;
+  
+}
+
+#hero:before {
+  content: "";
+  background: rgba(0, 0, 0, 0.65);
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+#hero .hero-container {
+  position: absolute;
+  bottom: 0;
+  top: 20%;
+  left: 10%;
+  right: 10%;
+  /* display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; */
+  /* padding: 0 15px; */
+}
+
+#hero h1 {
+  margin: 0 0 10px 0;
+  font-size: 75px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  /* color: #eee; */
+  color: #dc3545;
+}
+
+#hero h2 {
+  color: #eee;
+  margin-bottom: 50px;
+  margin-left: 15%;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  /* text-transform: uppercase; */
+}
+#hero p{
+  width: 480px;
+  padding: 0;
+  letter-spacing: 1px;
+  color: #ccc;
+}
+
+@media (min-width: 1024px) {
+  #hero {
+    background-attachment: fixed;
+  }
+}
+
+@media (max-width: 575px) {
+  #hero h1 {
+    font-size: 40px;
+  }
+  #hero h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    margin-left: 0;
+  }
+}
+
+
+/*--------------------------------------------------------------
+# Sections General
+--------------------------------------------------------------*/
+section {
+  padding-top: 50px;
+}
+
+.section-bg {
+  /* background: linear-gradient(180deg, #f2f6f9 0%, #fff 100%); */
+  background:  #fff ;
+}
+
+
+/*--------------------------------------------------------------
+# About
+--------------------------------------------------------------*/
+#about i{
+  color:#dc3545;
+}
+
+#about p a {
+  color:gray; 
+  text-decoration: auto;
+}
+
+#about p a:hover {
+  color:#dc3545; 
+}
+
+/*--------------------------------------------------------------
+# news
+--------------------------------------------------------------*/
+.newsTitle{
+  border-left:10px solid #dc3545;
+}
+
+.modelButton{
+  text-decoration: none;
+  color: inherit;
+}
+
+@media (max-width: 540px) {
+  .modelButton {
+    display: none !important;
+  }
+}
+
+/*--------------------------------------------------------------
+# picture
+--------------------------------------------------------------*/
+/* #picture .imagePicture{
+  overflow: hidden;
+}
+
+#picture .img-fluid{
+  transition: 1s ease;
+}
+
+#picture .img-fluid:hover{
+  transform:scale(1.3);
+} */
+
+.pictureTitle{
+  display: flex;
+  justify-content: center;
+}
+
+
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+#Arrow{
+  right: 5vh;
+  bottom: 5vh;
+  z-index: 999;
+}
+
+#Arrow i {
+  width: 2rem;
+  font-size: 2rem;
+  vertical-align: -25%;
+}
+
+/*********轉場*************/
+
+.nav-link {
+  transition: 1s ease;
+}
+
+#Menu{
+  transition: 1s;
+}
+
