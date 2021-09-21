@@ -44,7 +44,7 @@
           <ul class="navbar-nav ms-auto me-2">
             <li class="nav-item"><a class="nav-link smooth-scroll" href="#about">關於我們</a></li>
             <li class="nav-item"><a class="nav-link smooth-scroll" href="#news">活動資訊</a></li>
-            <li class="nav-item"><a class="nav-link smooth-scroll" href="#picture">最新消息</a></li>
+            <li class="nav-item"><a class="nav-link smooth-scroll" href="#news">最新消息</a></li>
             <li class="nav-item"><a class="nav-link smooth-scroll" href="#picture">活動照片</a></li>
             <li class="nav-item"><a class="nav-link" href="login.php">登入</a></li>
           </ul>
@@ -259,7 +259,7 @@
     ?>
           <div class="item">
             <a type="button" class="imgtype">
-              <img class="img-fluid" src="img/<?=$image['img'];?>" style="height:230px; object-fit: cover;">
+              <img class="img-fluid" src="img/<?=$image['img'];?>" style="width:350px; height:230px; object-fit: cover;">
             </a>
           </div>
     <?php
